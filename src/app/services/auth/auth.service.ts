@@ -26,11 +26,6 @@ export class AuthService  {
                 this._sCtrl.leerToken();
               }
 
-//  postLogin(email:any, password:any):Observable<any>{
-//    return (this.http.post<any>(`${this.__Parent.API_URL}dev/auth/login`,{email,password}))
-//  }
-
-
  getToken(email:any, password:any){
 
   this.habilitar=true;
@@ -38,9 +33,9 @@ export class AuthService  {
   .pipe(
     finalize(()=>{
       this.habilitar=false;
-      // let user:any;
+
        const user = this.users.find( (user) => user.email==email &&  user.password==password);
-      //  console.log(user);
+
       if(user){
         this.idUser=user?.id;
 
@@ -48,7 +43,6 @@ export class AuthService  {
         this.router.navigate(['/home'])
       }else{
         this._sCtrl.showToastr_error('Email y/o password incorrecta')
-        // console.log('Usuario y/o contraseña incorrecta');
 
       }
     })
@@ -62,25 +56,6 @@ export class AuthService  {
           console.log(error);
         }
   })
-  // this.postLogin(email, password)
-  // .pipe(finalize(()=>{
-  //   this.habilitar=false;
-  // }))
-  // .subscribe({
-  //   next: (data:any)=>{
-  //     this.idUser=data?.user?.id;
-  //     this.saveToken(data?.token, this.idUser, data?.user?.role);
-  //     this.router.navigate(['/home'])
-
-  //   },
-  //   error:(error:any)=>{
-  //     if(error?.error?.msg){
-  //       this._sCtrl.showToastr_error((error?.error?.msg).toString())
-  //     }else{
-  //       this._sCtrl.showToastr_error(error?.message)
-  //     }
-  //   }
-  // })
 }
 
 
@@ -103,7 +78,6 @@ saveToken(token:string, id:number,role:any){
 }
 
 isAutentificado():boolean{
-  // console.log(this._sCtrl.token.length);
 
   if(this._sCtrl.token.length<2){
     return false;
@@ -116,10 +90,7 @@ isAutentificado():boolean{
   }else{
     return false;
   }
-  // return this.userToken.length > 2;
-     // Check whether the token is expired and return
-  // true or false
-  // return !this.jwtHelper.isTokenExpired(token);
+
 }
 
 }

@@ -8,25 +8,25 @@ import { Horario } from '../models/horario-response';
 })
 export class TimbreService {
 
-  api:string="https://64851e5aa795d24810b6b7cd.mockapi.io"
+  api:string="https://6494838f0da866a95367e700.mockapi.io"
 
   constructor(private http: HttpClient) { }
 
   getHorario():Observable<Horario[]>{
-    return this.http.get<Horario[]>(`${this.api}/Horario`)
+    return this.http.get<Horario[]>(`${this.api}/schedule`)
   }
 
   getHorarioId(id:any):Observable<Horario>{
-    return this.http.get<Horario>(`${this.api}/Horario/${id}`);
+    return this.http.get<Horario>(`${this.api}/schedule/${id}`);
   }
   postHorario(horario:Horario):Observable<Horario>{
-    return this.http.post<Horario>(`${this.api}/Horario`, horario);
+    return this.http.post<Horario>(`${this.api}/schedule`, horario);
   }
   putHorario(id:any, horario:any):Observable<Horario>{
-    return this.http.put<Horario>(`${this.api}/Horario/${id}`, horario);
+    return this.http.put<Horario>(`${this.api}/schedule/${id}`, horario);
   }
   deleteHorario(id:any):Observable<any>{
-    return this.http.delete<any>(`${this.api}/Horario/${id}`);
+    return this.http.delete<any>(`${this.api}/schedule/${id}`);
   }
 
 }

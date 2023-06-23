@@ -9,7 +9,7 @@ import { Record } from '../models/record-reponse';
 export class RecordService {
 
 
-  api:string="https://timbreconnect-default-rtdb.firebaseio.com";
+  api:string="https://irrigatioiot-default-rtdb.firebaseio.com";
 
   constructor(private http: HttpClient) { }
 

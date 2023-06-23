@@ -7,6 +7,5 @@ export interface Horario {
 
 export interface Schedule {
   start_time: string;
-  tipo:       string;
-  sonara:     number;
+  end_time:   string;
 }

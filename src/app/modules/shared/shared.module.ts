@@ -12,6 +12,7 @@ import { FormComponent } from './form/form.component';
 import { TableComponent } from './table/table.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { AvatarComponent } from './avatar/avatar.component';
+import { DTHComponent } from './dth/dth.component';
 // import { ToastrModule } from 'ngx-toastr';
 
 
@@ -22,7 +23,8 @@ import { AvatarComponent } from './avatar/avatar.component';
     LoadingComponent,
     FormComponent,
     TableComponent,
-    AvatarComponent
+    AvatarComponent,
+    DTHComponent
   ],
   imports: [
     CommonModule,
@@ -39,6 +41,7 @@ import { AvatarComponent } from './avatar/avatar.component';
     FormComponent,
     TableComponent,
     AvatarComponent,
+    DTHComponent,
     MaterialModule,
     ReactiveFormsModule,
     NgxMaterialTimepickerModule,

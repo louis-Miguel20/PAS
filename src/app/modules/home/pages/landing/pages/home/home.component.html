@@ -1,23 +1,19 @@
 <div class="container-fluid pt-2 px-0 control">
   <section class="container control__container">
       <div class="shadow rounded-4 mb-3 control__container__cont">
-        <h1  class="text-center bold pt-3 control__container__cont__title">Panel de control <strong>TimbreConnect</strong></h1>
-        <h2 style="font-size: 16px; " class="text-center m-0 pt-3">Programación del timbre de lunes a viernes</h2>
+        <h1  class="text-center bold pt-3 control__container__cont__title">Panel de control <strong>IrrigationIOT</strong></h1>
+         <app-dth></app-dth>
         <div class="" *ngIf="loading!; else elseblock">
           <div
           class="d-flex  px-2 d-flex flex-wrap justify-content-between" style="align-items: center;">
             <div *ngIf="!editar" class="control__cont__btn">
-              <button mat-raised-button *ngIf="!activar" type="button" class="control__cont__btn__1 " (click)="tocarTimbre()" >
-                Tocar timbre
-              </button>
               <button mat-raised-button type="button" class="control__cont__btn__2 " (click)="cambiarEstado()">
-                <span *ngIf="!activar">Desactivar timbre</span>
-                <span *ngIf="activar">Activar timbre</span>
+                <span *ngIf="activar">Desactivar motobomba</span>
+                <span *ngIf="!activar">Activar motobomba</span>
               </button>
             </div>
 
             <div class="d-flex my-1" style="justify-content: space-between;">
-              <!-- *ngxPermissionsOnly="['ADMIN']" class="" -->
               <div *ngxPermissionsOnly="['ADMIN']">
               <button  type="button"
               mat-mini-fab
@@ -45,7 +41,6 @@
           </div>
           <div
               class="col-12 colsm-10 col-md-9 mt-2" style="margin: 0 auto;">
-              <!-- <h3 class="text-center">Programación del timbre</h3> -->
   <hr>
               <form *ngIf="editar; else edit"
                     [formGroup]="formu"
@@ -53,9 +48,8 @@
                 <table class="table table-bordered" >
                   <thead class="table-dark">
                     <tr>
-                        <th >Hora</th>
-                        <th >Tipo </th>
-                        <th >Sonara </th>
+                        <th >Hora de encendido</th>
+                        <th >Hora de apagado </th>
                         <th >Opciones</th>
                       </tr>
                     </thead>
@@ -69,26 +63,11 @@
                             * Invalido
                             </mat-error>
                         </td>
-                        <td align="center" class="p-1">
-                          <mat-form-field  class="example-full-width" appearance="fill">
-                            <mat-label>Seleccione un tipo</mat-label>
-                            <mat-select style="position: relative;" formControlName="tipo" name="tipo">
-                              <mat-option  z-index="1056" *ngFor="let timbre of tipo " [value]="timbre?.cod">
-                                {{timbre?.cod}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                        </td>
-                        <td align="center">
-                          <mat-form-field class="example-form-field" appearance="fill">
-                            <mat-label>¿Cuántas veces sonará?</mat-label>
-                            <mat-select style="position: relative;" formControlName="sonara" name="sonara">
-                              <mat-option  z-index="1056" *ngFor="let sonara of sonara " [value]="sonara?.cod">
-                                {{sonara?.cod}}
-                              </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-
+                      <td align="center" class="p-1">
+                            <ngx-timepicker-field [format]="24" [defaultTime]="'00:00'" formControlName="end_time" ></ngx-timepicker-field>
+                            <mat-error *ngIf="item.get('end_time')?.errors">
+                            * Invalido
+                            </mat-error>
                         </td>
                         <td class="p-1" align="center">
                           <button (click)="delHora(indexFormChildPrice)" type="button" mat-mini-fab class="btn__delete" ><mat-icon >delete</mat-icon></button>
@@ -115,7 +94,6 @@
         <ng-template #elseblock>
           <app-loading></app-loading>
         </ng-template>
-
      </div>
   </section>
 </div>

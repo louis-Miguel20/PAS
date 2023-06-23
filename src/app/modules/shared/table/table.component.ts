@@ -1,5 +1,5 @@
-import { Schedule } from './../../../models/record-reponse';
 import { Component, Input } from '@angular/core';
+import { Schedule } from 'src/app/models/horario-response';
 
 @Component({
   selector: 'app-table',

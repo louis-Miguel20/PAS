@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-evenly">
+  <div class="col-6 col-sm  col-md-3  d-flex  justify-content-center " style="align-items:center ; flex-direction: column; position: relative;">
+    <div class="" role="progre"          aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="z-index:5;" [style]="'--value:'+ (tem*2)"></div>
+    <div class="progre2" role="progre2"  aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="z-index:5;" [style]="'--value:'+ hum"></div>
+    <!-- <div class="progre2" role="progre3"  aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="z-index:5;" [style]="'--value:'+ (ph*(100/14))"></div> -->
+    <h2 class="iot">IOT</h2>
+  </div>
+  <div class="col-6 col-sm  col-md-5 p-3 d-flex  justify-content-center " style=" flex-direction: column;">
+    <h3 class="my-0 fw-semibold">Temperatura</h3>
+    <div class="progress mb-2">
+        <div class="progress-bar bg-info" role="progressbar" aria-label="Example with label" [style]="'width:'+ (tem*2)+'%' " aria-valuenow="65" aria-valuemin="65" aria-valuemax="100">{{tem}} °C</div>
+    </div>
+    <h3 class="my-0 fw-semibold">Humedad</h3>
+    <div class="progress mb-2">
+        <div class="progress-bar" role="progressbar" aria-label="Example with label" [style]="'width:'+hum+'%'" style="width: 67%; background-color: #BD00FF;" aria-valuenow="67" aria-valuemin="0" aria-valuemax="100">{{hum}} %</div>
+    </div>
+    <!-- <h3 class="my-0 fw-semibold">PH</h3>
+    <div class="progress mb-2">
+        <div class="progress-bar" role="progressbar" aria-label="Example with label" [style]="'width:'+(ph*(100/14))+'%'" style="width: 70%;background-color: #AD5421;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">{{ph}}</div>
+      </div> -->
+  </div>
+
+</div>

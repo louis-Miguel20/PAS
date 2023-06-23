@@ -70,6 +70,22 @@ public rol:any[]=[
     }
     return this.token;
   }
+  leerRole(){
+    // console.log('dsd');
+
+    let role:any;
+    if(localStorage.getItem('role')){
+       role= localStorage.getItem('role');
+       console.log(role);
+
+       if(role=="USER"){
+        this.router.navigate(['/home']);
+       }
+    }else{
+      role='';
+    }
+    return role;
+  }
   // ----------------------------------------------------------------------
   public get emailNoValid(){   return this.formu.get('email')?.invalid    && this.formu.get('email')?.touched;};
   public get roleNoValid(){   return this.formu.get('role')?.invalid    && this.formu.get('role')?.touched;};
@@ -109,7 +125,7 @@ public rol:any[]=[
       if(this.nameform==='Agregar'){
         this.postUser();
       }else if(this.nameform==='Editar'){
-        this.putUser()
+        this.putUser();
       }
     }
   }
@@ -225,7 +241,7 @@ this.router.navigate(['/login'])
   delUser(id:any){
     this._sUser.deleteUserId(id)
     .pipe( finalize(()=>{
-      if(this.currentRoute==='home/perfil'){
+      if(this.currentRoute==='/home/profile'){
         localStorage.clear()
         location.reload()
       }else{
@@ -252,7 +268,9 @@ this.router.navigate(['/login'])
       this.loadForm(this.user)
       this.editarC=false;
       this.changeC=false;
-
+      if(this.currentRoute==='/home/profile'){
+        location.reload();
+      }
       if(this.currentRoute==='/home/users'){
 
       this.getUsers()

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Record } from 'src/app/models/record-reponse';
+import { ControllerService } from 'src/app/services/controllers/controller.service';
 import { RecordService } from 'src/app/services/record.service';
 
 @Component({
@@ -10,7 +11,10 @@ import { RecordService } from 'src/app/services/record.service';
 export class HomeComponent implements OnInit {
   panelOpenState = false;
   record:Record[]=[];
-  constructor(private _Srecord: RecordService){
+  constructor(private _Srecord: RecordService,
+    private _Sctr:ControllerService
+    ){
+      this._Sctr.leerRole()
     this.getRecords()
   }
   ngOnInit(): void {

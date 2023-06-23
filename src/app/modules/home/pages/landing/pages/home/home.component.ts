@@ -17,7 +17,7 @@ import { Record } from 'src/app/models/record-reponse';
 export class HomeComponent implements OnInit {
 
   public loading:boolean=false;
-  public activar:boolean=true;
+  public activar:boolean=false;
   public tocar:boolean=true;
   public editar:boolean=false;
   public formu!:    FormGroup;
@@ -25,18 +25,18 @@ export class HomeComponent implements OnInit {
   da:any[]=[];
   public horari!:Schedule[];
   public record!:Record;
-  public tipo:any[]=[
-    {cod:"Cambio de clase"},
-    {cod:"Entrada"},
-    {cod:"Salida"},
-    {cod:"Descanso"},
-  ];
+  // public tipo:any[]=[
+  //   {cod:"Cambio de clase"},
+  //   {cod:"Entrada"},
+  //   {cod:"Salida"},
+  //   {cod:"Descanso"},
+  // ];
 
-  public sonara:any[]=[
-    {cod: 1},
-    {cod: 2},
-    {cod: 3},
-  ];
+  // public sonara:any[]=[
+  //   {cod: 1},
+  //   {cod: 2},
+  //   {cod: 3},
+  // ];
 
   constructor(private _sHorario:TimbreService,
     private form     : FormBuilder,
@@ -51,29 +51,45 @@ export class HomeComponent implements OnInit {
     this.createform();
   }
 
-  tocarTimbre(){
-    this.tocar=true;
-    this.putHorario(1,{tocar: true});
-    if(this.tocar){
-Swal.fire({
-  title: 'Tocando timbre!',
-  icon: 'success',
-   timer: 5000,
-  heightAuto:true,
-  timerProgressBar: true,
-  showConfirmButton: false,
-  showCancelButton: false,
-  backdrop:true,
-  allowOutsideClick: false,
-  allowEscapeKey: false,
-  allowEnterKey: false,
+//   tocarTimbre(){
+//     this.tocar=true;
+//     this.putHorario(1,{tocar: true});
+//     if(this.tocar){
+// Swal.fire({
+//   title: 'Tocando timbre!',
+//   icon: 'success',
+//    timer: 5000,
+//   heightAuto:true,
+//   timerProgressBar: true,
+//   showConfirmButton: false,
+//   showCancelButton: false,
+//   backdrop:true,
+//   allowOutsideClick: false,
+//   allowEscapeKey: false,
+//   allowEnterKey: false,
 
-})
-    }
+// })
+//     }
 
-  }
+//   }
   cambiarEstado(){
     this.activar=!this.activar;
+    let mensa:string="";
+    (this.activar)? mensa="Activando":mensa="Desactivando";
+    Swal.fire({
+      title:`${mensa} motobomba!`,
+      icon: 'success',
+       timer: 5000,
+      heightAuto:true,
+      timerProgressBar: true,
+      showConfirmButton: false,
+      showCancelButton: false,
+      backdrop:true,
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      allowEnterKey: false,
+
+    })
     this.putHorario(1, {activo: this.activar})
 
   }
@@ -140,6 +156,8 @@ Swal.fire({
     )
     .subscribe({
       next:(data)=>{
+        console.log(data);
+
         let fecha:Date = new Date();
 
         this.record={
@@ -179,8 +197,9 @@ Swal.fire({
     this.horario.push(
       this.form.group({
         start_time : ["", [Validators.required],[]],
-        tipo       : ["", [Validators.required],[]],
-        sonara     : ["", [Validators.required],[]],
+        end_time : ["", [Validators.required],[]],
+        // tipo       : ["", [Validators.required],[]],
+        // sonara     : ["", [Validators.required],[]],
       })
     )
   }
@@ -200,8 +219,9 @@ Swal.fire({
     this.horari.forEach((hora: any) => {
       const horaForm = this.form.group({
         start_time: new FormControl(hora?.start_time),
-        tipo: new FormControl(hora?.tipo),
-        sonara: new FormControl(hora?.sonara),
+        end_time: new FormControl(hora?.end_time),
+        // tipo: new FormControl(hora?.tipo),
+        // sonara: new FormControl(hora?.sonara),
       },{
       });
       this.horario.push(horaForm);

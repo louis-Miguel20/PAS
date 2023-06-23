@@ -28,6 +28,8 @@ export class HomeComponent implements OnInit, AfterViewInit  {
     private router: Router,
     public _sctr: ControllerService,
     ){
+      this._sctr.leerRole();
+
   }
   ngAfterViewInit(): void {
     this._sctr.dataSource.paginator = this.paginator;
@@ -39,6 +41,8 @@ export class HomeComponent implements OnInit, AfterViewInit  {
     this._sctr.loadForm(this._sctr.usuario);
     this._sctr.leerToken();
     this.getUsers();
+
+    // console.log('wedw w');
   }
 
   getUsers(){
