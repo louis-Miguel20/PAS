@@ -23,7 +23,19 @@ body{
   // background-color: red;
 }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
+.table-dark {
+  --bs-table-color: #fff;
+  --bs-table-bg: #1FC3F3;
+  --bs-table-border-color: #373b3e;
+  --bs-table-striped-bg: #2c3034;
+  --bs-table-striped-color: #fff;
+  --bs-table-active-bg: #373b3e;
+  --bs-table-active-color: #fff;
+  --bs-table-hover-bg: #323539;
+  --bs-table-hover-color: #fff;
+  color: var(--bs-table-color);
+  border-color: var(--bs-table-border-color);
+}
 ::-webkit-scrollbar{
   width: 10px;
   height: 10px;

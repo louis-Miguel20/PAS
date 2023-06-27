@@ -11,7 +11,10 @@ export class DTHComponent {
   public hum:number=90;
 
   constructor(private _sdth11:Dth11Service) {
-    this.getDth()
+    this.getDth();
+    setInterval(()=>{
+      this.getDth();
+    },5000)
   }
 
   getDth(){

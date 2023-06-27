@@ -51,6 +51,10 @@ export class HomeComponent implements OnInit {
     this.createform();
   }
 
+  desactivar(){
+    this.tocar=!this.tocar;
+    this.putHorario(1, {tocar: this.tocar})
+  }
 //   tocarTimbre(){
 //     this.tocar=true;
 //     this.putHorario(1,{tocar: true});
@@ -75,7 +79,7 @@ export class HomeComponent implements OnInit {
   cambiarEstado(){
     this.activar=!this.activar;
     let mensa:string="";
-    (this.activar)? mensa="Activando":mensa="Desactivando";
+    (this.activar)? mensa="Encendiendo":mensa="Apagando";
     Swal.fire({
       title:`${mensa} motobomba!`,
       icon: 'success',
@@ -189,6 +193,7 @@ export class HomeComponent implements OnInit {
   actualizarEstado(data:Horario){
     this.activar=data?.activo;
     this.horari=data?.schedules;
+    this.tocar=data.tocar;
     this.loadForm(this.horari)
 
   }

@@ -1,16 +1,24 @@
 <div class="container-fluid pt-2 px-0 control">
   <section class="container control__container">
-      <div class="shadow rounded-4 mb-3 control__container__cont">
+      <div class=" rounded-4 mb-3 control__container__cont">
         <h1  class="text-center bold pt-3 control__container__cont__title">Panel de control <strong>IrrigationIOT</strong></h1>
          <app-dth></app-dth>
         <div class="" *ngIf="loading!; else elseblock">
           <div
-          class="d-flex  px-2 d-flex flex-wrap justify-content-between" style="align-items: center;">
+          class="d-flex  px-2  flex-wrap justify-content" style="align-items: center;">
             <div *ngIf="!editar" class="control__cont__btn">
-              <button mat-raised-button type="button" class="control__cont__btn__2 " (click)="cambiarEstado()">
-                <span *ngIf="activar">Desactivar motobomba</span>
-                <span *ngIf="!activar">Activar motobomba</span>
+              <button *ngIf="tocar;" mat-raised-button type="button" class="control__cont__btn__2 " (click)="cambiarEstado()">
+                <span *ngIf="activar">Apagar motobomba</span>
+                <span *ngIf="!activar">Encender motobomba</span>
               </button>
+              <!-- <ng-template #buttonblock> -->
+                <button mat-raised-button type="button" class="control__cont__btn__3 " (click)="desactivar()">
+                  <span *ngIf="tocar">Desactivar sistema</span>
+                  <span *ngIf="!tocar">Activar sistema</span>
+                </button>
+              <!-- </ng-template> -->
+
+
             </div>
 
             <div class="d-flex my-1" style="justify-content: space-between;">
@@ -42,6 +50,8 @@
           <div
               class="col-12 colsm-10 col-md-9 mt-2" style="margin: 0 auto;">
   <hr>
+  <h3 class="text-center control__container__cont__title " style="font-weight: bolder;">Programación de horas de riego</h3>
+
               <form *ngIf="editar; else edit"
                     [formGroup]="formu"
                     class="table-responsive">

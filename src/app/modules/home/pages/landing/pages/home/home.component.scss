@@ -8,13 +8,18 @@
     }
   }
 }
+.justify-content{
+  justify-content: center;
+  margin-top: variables.$margin;
+}
 .control__cont__btn{
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-gap: 4px;
 
-  &__1, &__2{
+  &__1, &__2, &__3{
     color: variables.color(text-white)!important;
+    margin: variables.$margin;
     // font-weight: bold;
   }
   &__1{
@@ -22,6 +27,9 @@
   }
   &__2{
     background-color: variables.color(green) !important;
+  }
+  &__3{
+    background-color: variables.color(orange-dark)!important;
   }
 }
 button.btn__delete{
