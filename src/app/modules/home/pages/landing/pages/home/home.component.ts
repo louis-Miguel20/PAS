@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { TimbreService } from 'src/app/services/timbre.service';
 import { Horario, Schedule } from '../../../../../../models/horario-response';
 import { finalize } from 'rxjs';
@@ -98,7 +98,23 @@ export class HomeComponent implements OnInit {
 
   }
   enviar(){
+    // console.log(this.formu.controls?.['horario']);
+    const valimenor = this.getCtrl('horario', this.formu)?.controls;
 
+    console.log(valimenor);
+
+    valimenor.forEach((ele:any)=>{
+      if(ele?.controls?.end_time.errors?.['endTimeInvalid']){
+        this.toastr.error('Hay horas de apagado menores que las de encendido')
+        return
+      }
+      if(ele?.controls?.start_time.errors?.['startTimeInvalid']){
+        this.toastr.error('Hay horas de encendido mayores que las de apagado')
+        return
+      }
+    })
+
+    // controls.horario.controls[1].controls.end_time.errors.endTimeInvalid
     let sihayrepetidos:boolean=false;
     let verifica:any[]= this.formu.value?.horario?.map((ele:any)=>ele?.start_time);
 
@@ -161,9 +177,6 @@ export class HomeComponent implements OnInit {
     .subscribe({
       next:(data)=>{
         console.log(data);
-        let hrOld=[];
-
-        // cont hrnovedad= this.horari
 
         let fecha:Date = new Date();
 
@@ -206,12 +219,40 @@ export class HomeComponent implements OnInit {
   addHora(){
     this.horario.push(
       this.form.group({
-        start_time : ["", [Validators.required],[]],
-        end_time : ["", [Validators.required],[]],
-        // tipo       : ["", [Validators.required],[]],
-        // sonara     : ["", [Validators.required],[]],
+        start_time : ["", [Validators.required, this.startTimeValidator],[]],
+        end_time : ["", [Validators.required, this.endTimeValidator],[]],
       })
     )
+  }
+  startTimeValidator(control: AbstractControl) {
+    const start_time = control.value;
+    const end_time = control.parent?.get('end_time')?.value;
+
+    if (start_time && end_time && start_time >= end_time) {
+      return { startTimeInvalid: true };
+    }
+
+    return null;
+  }
+  endTimeValidator(control:AbstractControl) {
+    const start_time = control.parent?.get('start_time')?.value;
+    const end_time = control.value;
+
+    if (start_time && end_time && start_time >= end_time) {
+      return { endTimeInvalid: true };
+    }
+
+    return null;
+  }
+  timeComparisonValidator(group: FormGroup) {
+    const start_time = group.get('start_time')?.value;
+    const end_time = group.get('end_time')?.value;
+
+    if (start_time && end_time && start_time >= end_time) {
+      group.get('end_time')?.setErrors({ endTimeInvalid: true });
+    } else {
+      group.get('end_time')?.setErrors(null);
+    }
   }
   cancel(){
     this.editar=false
@@ -223,16 +264,16 @@ export class HomeComponent implements OnInit {
   public getCtrl(key: string, form: FormGroup) {
     return  (<FormArray>form.get(key));
   }
+
   loadForm(schedule:any[]){
     this.horari= schedule;
     this.horario.clear();
     this.horari.forEach((hora: any) => {
       const horaForm = this.form.group({
-        start_time: new FormControl(hora?.start_time),
-        end_time: new FormControl(hora?.end_time),
-        // tipo: new FormControl(hora?.tipo),
-        // sonara: new FormControl(hora?.sonara),
+        start_time: new FormControl(hora?.start_time,[Validators.required, this.startTimeValidator]),
+        end_time: new FormControl(hora?.end_time, [Validators.required, this.endTimeValidator]),
       },{
+
       });
       this.horario.push(horaForm);
     });

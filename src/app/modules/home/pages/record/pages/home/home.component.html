@@ -37,7 +37,7 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <button type="button" class="mx-2" mat-raised-button (click)="buscar(pickerr.value)"> buscar</button>
+      <button type="button" class="mx-2" mat-raised-button (click)="buscar(pickerr.value)">Buscar</button>
     </div>
 
     <hr>
@@ -64,10 +64,10 @@
         </mat-expansion-panel>
 
       </mat-accordion>
-
+      <app-loading *ngIf="carg"></app-loading>
       <ng-template #vacio>
 
-        <div *ngIf="mostrar" class="shadow alerta col-6 p-4">
+        <div *ngIf="mostrar" class="shadow alerta col-6 p-4 shake-vertical">
           <p>No se encontro registro</p>
         </div>
       </ng-template>
