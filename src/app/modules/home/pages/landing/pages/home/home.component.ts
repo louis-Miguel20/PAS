@@ -161,6 +161,9 @@ export class HomeComponent implements OnInit {
     .subscribe({
       next:(data)=>{
         console.log(data);
+        let hrOld=[];
+
+        // cont hrnovedad= this.horari
 
         let fecha:Date = new Date();
 
@@ -193,6 +196,8 @@ export class HomeComponent implements OnInit {
   actualizarEstado(data:Horario){
     this.activar=data?.activo;
     this.horari=data?.schedules;
+    console.log(this.horari);
+
     this.tocar=data.tocar;
     this.loadForm(this.horari)
 
