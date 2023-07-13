@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   panelOpenState = false;
   record:Record[]=[];
   bus:any[]=[];
+  mostrar:boolean=false;
   constructor(private _Srecord: RecordService,
     private _Sctr:ControllerService
     ){
@@ -43,6 +44,7 @@ export class HomeComponent implements OnInit {
   }
 
   buscar(fecha:any){
+    // this.mostrar=false;
     this.bus=[];
     let org =fecha;
     let f=[];
@@ -61,7 +63,8 @@ export class HomeComponent implements OnInit {
     console.log(bs);
     bs.forEach((ele:any)=>{
       this.bus.push(ele)
-    })
+    });
+    ((this.bus.length===0)) ? this.mostrar=true: this.mostrar=false;
 
 
   }

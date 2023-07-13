@@ -27,22 +27,22 @@
     </mat-accordion>
   </div>
   <div  class="col-12  px-2">
-    <h4 class="h1 text-center">Consultar historial</h4>
-    <div class="d-flex justify-content-around " style="align-items: center;">
+    <h4 class="h1 text-center mt-4" style="font-weight: 700; font-size: 24px;">Consultar historial</h4>
+    <div class="d-flex justify-content-center " style="align-items: center;">
       <mat-form-field>
         <mat-label>Choose a date</mat-label>
         <input matInput [matDatepicker]="picker" #pickerr>
-        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-hint>DD/MM/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <button type="button" mat-raised-button (click)="buscar(pickerr.value)"> buscar</button>
+      <button type="button" class="mx-2" mat-raised-button (click)="buscar(pickerr.value)"> buscar</button>
     </div>
 
     <hr>
     <div  class="col-12">
-      <mat-accordion *ngIf="bus.length>0" >
+      <mat-accordion *ngIf="bus.length>0 ; else vacio" >
 
         <mat-expansion-panel *ngFor="let bus of bus" (opened)="panelOpenState = true"
                              (closed)="panelOpenState = false">
@@ -64,6 +64,14 @@
         </mat-expansion-panel>
 
       </mat-accordion>
+
+      <ng-template #vacio>
+
+        <div *ngIf="mostrar" class="shadow alerta col-6 p-4">
+          <p>No se encontro registro</p>
+        </div>
+      </ng-template>
+
     </div>
 
   </div>
