@@ -1,3 +1,26 @@
+.info{
+  // border: solid 1px red;
+  justify-content: center;
+  display: flex;
+  font-weight: 600;
+  flex-direction: column;
+  align-items: center;
+    .circle{
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        // box-shadow:   0 0 5px #fff,
+        // 0 0 10px #fff,
+        // 0 0 20px #fff,
+        // 0 0 40px #0ff,
+        // 0 0 80px #0ff,
+        // 0 0 90px #0ff,
+        // 0 0 100px #0ff,
+        // 0 0 150px #0ff;
+
+    }
+}
+
 @keyframes growProgressBar {
   0%, 33% { --pgPercentage: 0; }
   100% { --pgPercentage: var(--value); }
@@ -74,4 +97,43 @@ input, select, textarea{
 .mat-mini-fab{
 background-color: #ffff;
 scale: 0.8;
+}
+.ping {
+	-webkit-animation: ping 0.8s ease-in-out infinite both;
+	        animation: ping 0.8s ease-in-out infinite both;
+}
+
+ @-webkit-keyframes ping {
+  0% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+    opacity: 0.8;
+  }
+  80% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(2.2);
+            transform: scale(2.2);
+    opacity: 0;
+  }
+}
+@keyframes ping {
+  0% {
+    -webkit-transform: scale(0.2);
+            transform: scale(0.2);
+    opacity: 0.8;
+  }
+  80% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(2.2);
+            transform: scale(2.2);
+    opacity: 0;
+  }
 }

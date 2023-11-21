@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   public editar:boolean=false;
   public formu!:    FormGroup;
 
-  da:any[]=[];
+  dataGeneral!:Horario;;
   public horari!:Schedule[];
   public record!:Record;
   // public tipo:any[]=[
@@ -98,10 +98,9 @@ export class HomeComponent implements OnInit {
 
   }
   enviar(){
-    // console.log(this.formu.controls?.['horario']);
+
     const valimenor = this.getCtrl('horario', this.formu)?.controls;
 
-    console.log(valimenor);
 
     valimenor.forEach((ele:any)=>{
       if(ele?.controls?.end_time.errors?.['endTimeInvalid']){
@@ -176,7 +175,6 @@ export class HomeComponent implements OnInit {
     )
     .subscribe({
       next:(data)=>{
-        console.log(data);
 
         let fecha:Date = new Date();
 
@@ -207,9 +205,10 @@ export class HomeComponent implements OnInit {
     })
   }
   actualizarEstado(data:Horario){
+    this.dataGeneral=data;
     this.activar=data?.activo;
     this.horari=data?.schedules;
-    console.log(this.horari);
+
 
     this.tocar=data.tocar;
     this.loadForm(this.horari)

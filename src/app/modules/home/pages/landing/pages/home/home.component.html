@@ -2,7 +2,7 @@
   <section class="container control__container " >
       <div class=" rounded-4 mb-3 control__container__cont">
         <h1  class="text-center bold pt-3 control__container__cont__title">Panel de control <strong>IrrigationIOT</strong></h1>
-         <app-dth></app-dth>
+         <app-dth  [infoHorario]="dataGeneral"></app-dth>
         <div class="" *ngIf="loading!; else elseblock">
           <div
           class="d-flex  px-2  flex-wrap justify-content" style="align-items: center;">

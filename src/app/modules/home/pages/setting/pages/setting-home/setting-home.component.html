@@ -1,0 +1,42 @@
+<div class="container p-2">
+  <h1>Configuración general</h1>
+  <hr>
+  <div class="cont__seting">
+    <div class="row m-0">
+      <div class="col-12">
+        <mat-accordion class="example-headers-align">
+          <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Motobomba
+              </mat-panel-title>
+              <mat-panel-description class="d-flex justify-content-end">
+                <mat-icon>surround_sound</mat-icon>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="d-flex flex-column">
+              <form class="cont__form" [formGroup]="formu">
+                <h3>Configure la cantidad de kilowatt de su motobomba</h3>
+                <mat-form-field>
+                  <mat-label>Kilowatt</mat-label>
+                  <input formControlName="kilowatt" matInput type="number" step="any" min="0">
+              </mat-form-field>
+              </form>
+              <div class="opciones">
+                <button type="button" (click)="enviar()" mat-stroked-button color="primary">
+                  <mat-icon>saved</mat-icon>
+                  Guardar
+                </button>
+              </div>
+            </div>
+
+              <mat-action-row>
+              <button mat-button color="primary" (click)="nextStep()">Siguiente</button>
+            </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+      </div>
+    </div>
+  </div>
+</div>

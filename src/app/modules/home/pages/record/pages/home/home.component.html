@@ -2,30 +2,7 @@
   <h1>Registro</h1>
   <hr>
 <div class="cont-bs">
-  <div  class="col-12 ">
-    <mat-accordion *ngIf="record.length>0; else loading" >
 
-      <mat-expansion-panel *ngFor="let record of record" (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{record?.name}}
-          </mat-panel-title>
-          <mat-panel-title>
-            {{record?.lastname}}
-          </mat-panel-title>
-          <mat-panel-description>
-            {{record?.update_date}}
-          </mat-panel-description>
-        </mat-expansion-panel-header>
-        <div class="">
-          <h2 class="text-center">Horario</h2>
-        <app-table [schedule]="record['schedules']"></app-table>
-        </div>
-      </mat-expansion-panel>
-
-    </mat-accordion>
-  </div>
   <div  class="col-12  px-2">
     <h4 class="h1 text-center mt-4" style="font-weight: 700; font-size: 24px;">Consultar historial</h4>
     <div class="d-flex justify-content-center " style="align-items: center;">
@@ -74,6 +51,30 @@
 
     </div>
 
+  </div>
+  <div  class="col-12 ">
+    <mat-accordion *ngIf="record.length>0; else loading" >
+
+      <mat-expansion-panel *ngFor="let record of record" (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{record?.name}}
+          </mat-panel-title>
+          <mat-panel-title>
+            {{record?.lastname}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{record?.update_date}}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="">
+          <h2 class="text-center">Horario</h2>
+        <app-table [schedule]="record['schedules']"></app-table>
+        </div>
+      </mat-expansion-panel>
+
+    </mat-accordion>
   </div>
 </div>
   <ng-template #loading>

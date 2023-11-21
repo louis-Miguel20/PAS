@@ -3,6 +3,7 @@ export interface Horario {
   schedules: Schedule[];
   activo:    boolean;
   tocar:     boolean;
+  kilowatt:  string;
 }
 
 export interface Schedule {

@@ -1,10 +1,23 @@
 <div class="d-flex justify-content-evenly">
-  <div class="col-6 col-sm  col-md-3  d-flex  justify-content-center " style="align-items:center ; flex-direction: column; position: relative;">
+<div class="col-6 col-sm  col-md-3">
+  <div class="  d-flex  justify-content-center " style="align-items:center ; flex-direction: column; position: relative;">
     <div class="" role="progre"          aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="z-index:5;" [style]="'--value:'+ (tem*2)"></div>
     <div class="progre2" role="progre2"  aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="z-index:5;" [style]="'--value:'+ hum"></div>
     <!-- <div class="progre2" role="progre3"  aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="z-index:5;" [style]="'--value:'+ (ph*(100/14))"></div> -->
     <h2 class="iot">IOT</h2>
+
   </div>
+  <div class="info my-1" *ngIf="infoHorario">
+    <div class="d-flex">
+      <span [ngStyle]="{'color': (infoHorario.activo || (infoHorario.tocar && isRange) ) ? '#3ffc08' : '#fd083d'}">{{(infoHorario.activo || (infoHorario.tocar && isRange) ) ? 'Encendido' : 'Apagado'}}</span>
+    <div class="ping circle" [ngStyle]="{'background-color': !infoHorario.activo ? '#fd083d ' : '#3ffc08'}"></div>
+    </div>
+    <div class="">
+    <span>{{(infoHorario.activo || (infoHorario.tocar && isRange) )? infoHorario.kilowatt: 0}} KW</span>
+    </div>
+  </div>
+
+</div>
   <div class="col-6 col-sm  col-md-5 p-3 d-flex  justify-content-center " style=" flex-direction: column;">
     <h3 class="my-0 fw-semibold">Temperatura</h3>
     <div class="progress mb-2">
