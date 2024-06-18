@@ -51,10 +51,10 @@
                       <button   class="btn" color="primary" (click)="_sctr.editar(Usuarios)" type="button"  mat-icon-button class="btn "
                       data-bs-toggle="modal"
                       data-bs-target="#ModalUser">
-                        <mat-icon>edit</mat-icon>
+                        <mat-icon>editar</mat-icon>
                       </button>
                       <button class="btn" color="warn" (click)="_sctr.eliminar(Usuarios)" type="button" mat-icon-button class="btn ">
-                        <mat-icon>delete</mat-icon>
+                        <mat-icon>eliminar</mat-icon>
                       </button>
                     </div>
                   </td>
@@ -64,7 +64,7 @@
                 <tr mat-row *matRowDef="let Usuarios; columns: displayedColumns; let i = index"></tr>
 
                 <tr class="mat-row" *matNoDataRow>
-                  <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                  <td class="mat-cell" colspan="4">No data "{{input.value}}"</td>
                 </tr>
               </table>
           </div>

@@ -34,7 +34,7 @@
 
 div[role="progre"],div[role="progre2"],div[role="progre3"] {
   --size: 10rem;
-  --fg: #33caf8;
+  --fg: #33f85e;
   --bg: rgb(255, 255, 255);
   // --pgPercentage: var(--value);
   animation: growProgressBar 3s 1 forwards;
@@ -54,7 +54,7 @@ div[role="progre"],div[role="progre2"],div[role="progre3"] {
 div[role="progre2"]{
   --size: 8rem;
   scale: .9;
-  --fg: #BD00FF;
+  --fg: #003cff;
   position: absolute;
 }
 div[role="progre3"]{
