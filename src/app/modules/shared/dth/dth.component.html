@@ -1,11 +1,9 @@
 <div class="d-flex justify-content-evenly">
 <div class="col-6 col-sm  col-md-3">
   <div class="  d-flex  justify-content-center " style="align-items:center ; flex-direction: column; position: relative;">
-    <div class="" role="progre"          aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="z-index:5;" [style]="'--value:'+ (tem*2)"></div>
-    <div class="progre2" role="progre2"  aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="z-index:5;" [style]="'--value:'+ hum"></div>
-    <!-- <div class="progre2" role="progre3"  aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="z-index:5;" [style]="'--value:'+ (ph*(100/14))"></div> -->
-    <h2 class="iot"> % </h2>
-
+    <a class="navbar-brand" [routerLink]="['home']">
+      <img src="assets/icons/sis.png" class="img" alt="iot">
+  </a>
   </div>
   <div class="info my-1" *ngIf="infoHorario">
     <div class="d-flex">
