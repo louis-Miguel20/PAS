@@ -1,15 +1,15 @@
 <div class="container-fluid pt-2 px-0 control">
   <section class="container control__container " >
       <div class=" rounded-4 mb-3 control__container__cont">
-        <h1  class="text-center bold pt-3 control__container__cont__title">Panel de control <strong>Finca Los Lirios</strong></h1>
+        <h1  class="text-center bold pt-3 control__container__cont__title">Panel de control del <strong>Sistema de Riego</strong></h1>
          <app-dth  [infoHorario]="dataGeneral"></app-dth>
         <div class="" *ngIf="loading!; else elseblock">
           <div
           class="d-flex  px-2  flex-wrap justify-content" style="align-items: center;">
             <div *ngIf="!editar" class="control__cont__btn">
               <button *ngIf="tocar;" mat-raised-button type="button" class="control__cont__btn__2 " (click)="cambiarEstado()">
-                <span *ngIf="activar">Apagar motobomba</span>
-                <span *ngIf="!activar">Encender motobomba</span>
+                <span *ngIf="activar">Apagar ElectroBomba</span>
+                <span *ngIf="!activar">Encender ElectroBomba</span>
               </button>
               <!-- <ng-template #buttonblock> -->
                 <button mat-raised-button type="button" class="control__cont__btn__3 " (click)="desactivar()">
